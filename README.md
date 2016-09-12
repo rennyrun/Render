@@ -9,6 +9,8 @@
 
 *React-inspired Swift library for writing UIKit UIs.*
 
+[(Swift 2.3 branch here)](https://github.com/alexdrone/Render/tree/swift_2_3)
+
 #Why
 
 From [Why React matters](http://joshaber.github.io/2015/01/30/why-react-native-matters/):
