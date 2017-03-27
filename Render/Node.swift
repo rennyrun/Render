@@ -126,6 +126,8 @@ public class Node<V: UIView>: NodeType {
     view.yoga.applyLayout(preservingOrigin: false)
     view.bounds.size = view.yoga.intrinsicSize  
     view.yoga.applyLayout(preservingOrigin: false)
+    
+    self.didRender()
   }
 
   public func internalConfigure(in bounds: CGSize) {
@@ -144,7 +146,6 @@ public class Node<V: UIView>: NodeType {
         yoga.markDirty()
       }
     }
-    self.didRender()
   }
 
   public func willRender() {
