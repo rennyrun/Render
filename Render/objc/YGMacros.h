@@ -3,11 +3,11 @@
 #pragma once
 
 #ifdef __cplusplus
-#define YG_EXTERN_C_BEGIN extern "C" {
-#define YG_EXTERN_C_END }
+#define RYG_EXTERN_C_BEGIN extern "C" {
+#define RYG_EXTERN_C_END }
 #else
-#define YG_EXTERN_C_BEGIN
-#define YG_EXTERN_C_END
+#define RYG_EXTERN_C_BEGIN
+#define RYG_EXTERN_C_END
 #endif
 
 #ifdef _WINDLL
@@ -21,16 +21,16 @@
 #endif
 
 #if FB_ASSERTIONS_ENABLED
-#define YG_ABORT() abort()
+#define RYG_ABORT() abort()
 #else
-#define YG_ABORT()
+#define RYG_ABORT()
 #endif
 
-#ifndef YG_ASSERT
-#define YG_ASSERT(X, message)              \
+#ifndef RYG_ASSERT
+#define RYG_ASSERT(X, message)              \
 if (!(X)) {                              \
-YGLog(YGLogLevelError, "%s", message); \
-YG_ABORT();                            \
+RYGLog(RYGLogLevelError, "%s", message); \
+RYG_ABORT();                            \
 }
 #endif
 
@@ -38,9 +38,9 @@ YG_ABORT();                            \
 // Cannot use NSInteger as NSInteger has a different size than int (which is the default type of a
 // enum).
 // Therefor when linking the Yoga C library into obj-c the header is a missmatch for the Yoga ABI.
-#define YG_ENUM_BEGIN(name) NS_ENUM(int, name)
-#define YG_ENUM_END(name)
+#define RYG_ENUM_BEGIN(name) NS_ENUM(int, name)
+#define RYG_ENUM_END(name)
 #else
-#define YG_ENUM_BEGIN(name) enum name
-#define YG_ENUM_END(name) name
+#define RYG_ENUM_BEGIN(name) enum name
+#define RYG_ENUM_END(name) name
 #endif

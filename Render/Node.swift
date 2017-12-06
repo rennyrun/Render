@@ -42,7 +42,7 @@ public protocol NodeType: class {
 public class Node<V: UIView>: NodeType {
 
   public typealias CreateBlock = (Void) -> V
-  public typealias ConfigureBlock = (V, YGLayout, CGSize) -> (Void)
+  public typealias ConfigureBlock = (V, RYGLayout, CGSize) -> (Void)
   public typealias OnRenderBlock = (V?) -> (Void)
 
   /** The underlying view rendered from the node. */
@@ -146,6 +146,8 @@ public class Node<V: UIView>: NodeType {
         yoga.markDirty()
       }
     }
+    
+    
   }
 
   public func willRender() {

@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 public extension CGFloat {
-  public static let undefined: CGFloat = YGNaNSize.width
+  public static let undefined: CGFloat = RYGNaNSize.width
   public static let max: CGFloat = CGFloat(FLT_MAX)
   public static let epsilon: CGFloat = CGFloat(FLT_EPSILON)
 }

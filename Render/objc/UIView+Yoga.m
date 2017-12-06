@@ -4,16 +4,16 @@
 #import "YGLayout+Private.h"
 #import <objc/runtime.h>
 
-static const void *kYGYogaAssociatedKey = &kYGYogaAssociatedKey;
+static const void *kRYGYogaAssociatedKey = &kRYGYogaAssociatedKey;
 
 @implementation UIView (YogaKit)
 
-- (YGLayout *)yoga
+- (RYGLayout *)yoga
 {
-  YGLayout *yoga = objc_getAssociatedObject(self, kYGYogaAssociatedKey);
+  RYGLayout *yoga = objc_getAssociatedObject(self, kRYGYogaAssociatedKey);
   if (!yoga) {
-    yoga = [[YGLayout alloc] initWithView:self];
-    objc_setAssociatedObject(self, kYGYogaAssociatedKey, yoga, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    yoga = [[RYGLayout alloc] initWithView:self];
+    objc_setAssociatedObject(self, kRYGYogaAssociatedKey, yoga, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
   }
 
   return yoga;
@@ -21,11 +21,11 @@ static const void *kYGYogaAssociatedKey = &kYGYogaAssociatedKey;
 
 - (void)resetYoga
 {
-  YGLayout *yoga = [[YGLayout alloc] initWithView:self];
-  objc_setAssociatedObject(self, kYGYogaAssociatedKey, yoga, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  RYGLayout *yoga = [[RYGLayout alloc] initWithView:self];
+  objc_setAssociatedObject(self, kRYGYogaAssociatedKey, yoga, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (void)configureLayoutWithBlock:(YGLayoutConfigurationBlock)block
+- (void)configureLayoutWithBlock:(RYGLayoutConfigurationBlock)block
 {
   if (block != nil) {
     block(self.yoga);

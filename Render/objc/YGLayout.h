@@ -4,11 +4,11 @@
 #import "YGEnums.h"
 #import "Yoga.h"
 
-static CGSize YGNaNSize = {
-  .width = YGUndefined,
-  .height = YGUndefined,
+static CGSize RYGNaNSize = {
+  .width = RYGUndefined,
+  .height = RYGUndefined,
 };
-@interface YGLayout : NSObject
+@interface RYGLayout : NSObject
 
 /**
  The property that decides if we should include this view when calculating layout. Defaults to YES.
@@ -21,16 +21,16 @@ static CGSize YGNaNSize = {
  */
 @property (nonatomic, readwrite, assign, setter=setEnabled:) BOOL isEnabled;
 
-@property (nonatomic, readwrite, assign) YGDirection direction;
-@property (nonatomic, readwrite, assign) YGFlexDirection flexDirection;
-@property (nonatomic, readwrite, assign) YGJustify justifyContent;
-@property (nonatomic, readwrite, assign) YGAlign alignContent;
-@property (nonatomic, readwrite, assign) YGAlign alignItems;
-@property (nonatomic, readwrite, assign) YGAlign alignSelf;
-@property (nonatomic, readwrite, assign) YGPositionType position;
-@property (nonatomic, readwrite, assign) YGWrap flexWrap;
-@property (nonatomic, readwrite, assign) YGOverflow overflow;
-@property (nonatomic, readwrite, assign) YGDisplay display;
+@property (nonatomic, readwrite, assign) RYGDirection direction;
+@property (nonatomic, readwrite, assign) RYGFlexDirection flexDirection;
+@property (nonatomic, readwrite, assign) RYGJustify justifyContent;
+@property (nonatomic, readwrite, assign) RYGAlign alignContent;
+@property (nonatomic, readwrite, assign) RYGAlign alignItems;
+@property (nonatomic, readwrite, assign) RYGAlign alignSelf;
+@property (nonatomic, readwrite, assign) RYGPositionType position;
+@property (nonatomic, readwrite, assign) RYGWrap flexWrap;
+@property (nonatomic, readwrite, assign) RYGOverflow overflow;
+@property (nonatomic, readwrite, assign) RYGDisplay display;
 
 @property (nonatomic, readwrite, assign) CGFloat flexGrow;
 @property (nonatomic, readwrite, assign) CGFloat flexShrink;
@@ -82,9 +82,9 @@ static CGSize YGNaNSize = {
 @property (nonatomic, readwrite, assign) CGFloat aspectRatio;
 
 /**
- Get the resolved direction of this node. This won't be YGDirectionInherit
+ Get the resolved direction of this node. This won't be RYGDirectionInherit
  */
-@property (nonatomic, readonly, assign) YGDirection resolvedDirection;
+@property (nonatomic, readonly, assign) RYGDirection resolvedDirection;
 
 /**
  Perform a layout calculation and update the frames of the views in the hierarchy with the results.

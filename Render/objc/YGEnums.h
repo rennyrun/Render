@@ -4,124 +4,124 @@
 
 #include "YGMacros.h"
 
-YG_EXTERN_C_BEGIN
+RYG_EXTERN_C_BEGIN
 
-#define YGAlignCount 8
-typedef YG_ENUM_BEGIN(YGAlign) {
-  YGAlignAuto,
-  YGAlignFlexStart,
-  YGAlignCenter,
-  YGAlignFlexEnd,
-  YGAlignStretch,
-  YGAlignBaseline,
-  YGAlignSpaceBetween,
-  YGAlignSpaceAround,
-} YG_ENUM_END(YGAlign);
+#define RYGAlignCount 8
+typedef RYG_ENUM_BEGIN(RYGAlign) {
+  RYGAlignAuto,
+  RYGAlignFlexStart,
+  RYGAlignCenter,
+  RYGAlignFlexEnd,
+  RYGAlignStretch,
+  RYGAlignBaseline,
+  RYGAlignSpaceBetween,
+  RYGAlignSpaceAround,
+} RYG_ENUM_END(RYGAlign);
 
-#define YGDimensionCount 2
-typedef YG_ENUM_BEGIN(YGDimension) {
-  YGDimensionWidth,
-  YGDimensionHeight,
-} YG_ENUM_END(YGDimension);
+#define RYGDimensionCount 2
+typedef RYG_ENUM_BEGIN(RYGDimension) {
+  RYGDimensionWidth,
+  RYGDimensionHeight,
+} RYG_ENUM_END(RYGDimension);
 
-#define YGDirectionCount 3
-typedef YG_ENUM_BEGIN(YGDirection) {
-  YGDirectionInherit,
-  YGDirectionLTR,
-  YGDirectionRTL,
-} YG_ENUM_END(YGDirection);
+#define RYGDirectionCount 3
+typedef RYG_ENUM_BEGIN(RYGDirection) {
+  RYGDirectionInherit,
+  RYGDirectionLTR,
+  RYGDirectionRTL,
+} RYG_ENUM_END(RYGDirection);
 
-#define YGDisplayCount 2
-typedef YG_ENUM_BEGIN(YGDisplay) {
-  YGDisplayFlex,
-  YGDisplayNone,
-} YG_ENUM_END(YGDisplay);
+#define RYGDisplayCount 2
+typedef RYG_ENUM_BEGIN(RYGDisplay) {
+  RYGDisplayFlex,
+  RYGDisplayNone,
+} RYG_ENUM_END(RYGDisplay);
 
-#define YGEdgeCount 9
-typedef YG_ENUM_BEGIN(YGEdge) {
-  YGEdgeLeft,
-  YGEdgeTop,
-  YGEdgeRight,
-  YGEdgeBottom,
-  YGEdgeStart,
-  YGEdgeEnd,
-  YGEdgeHorizontal,
-  YGEdgeVertical,
-  YGEdgeAll,
-} YG_ENUM_END(YGEdge);
+#define RYGEdgeCount 9
+typedef RYG_ENUM_BEGIN(RYGEdge) {
+  RYGEdgeLeft,
+  RYGEdgeTop,
+  RYGEdgeRight,
+  RYGEdgeBottom,
+  RYGEdgeStart,
+  RYGEdgeEnd,
+  RYGEdgeHorizontal,
+  RYGEdgeVertical,
+  RYGEdgeAll,
+} RYG_ENUM_END(RYGEdge);
 
-#define YGExperimentalFeatureCount 2
-typedef YG_ENUM_BEGIN(YGExperimentalFeature) {
-  YGExperimentalFeatureRounding,
-  YGExperimentalFeatureWebFlexBasis,
-} YG_ENUM_END(YGExperimentalFeature);
+#define RYGExperimentalFeatureCount 2
+typedef RYG_ENUM_BEGIN(RYGExperimentalFeature) {
+  RYGExperimentalFeatureRounding,
+  RYGExperimentalFeatureWebFlexBasis,
+} RYG_ENUM_END(RYGExperimentalFeature);
 
-#define YGFlexDirectionCount 4
-typedef YG_ENUM_BEGIN(YGFlexDirection) {
-  YGFlexDirectionColumn,
-  YGFlexDirectionColumnReverse,
-  YGFlexDirectionRow,
-  YGFlexDirectionRowReverse,
-} YG_ENUM_END(YGFlexDirection);
+#define RYGFlexDirectionCount 4
+typedef RYG_ENUM_BEGIN(RYGFlexDirection) {
+  RYGFlexDirectionColumn,
+  RYGFlexDirectionColumnReverse,
+  RYGFlexDirectionRow,
+  RYGFlexDirectionRowReverse,
+} RYG_ENUM_END(RYGFlexDirection);
 
-#define YGJustifyCount 5
-typedef YG_ENUM_BEGIN(YGJustify) {
-  YGJustifyFlexStart,
-  YGJustifyCenter,
-  YGJustifyFlexEnd,
-  YGJustifySpaceBetween,
-  YGJustifySpaceAround,
-} YG_ENUM_END(YGJustify);
+#define RYGJustifyCount 5
+typedef RYG_ENUM_BEGIN(RYGJustify) {
+  RYGJustifyFlexStart,
+  RYGJustifyCenter,
+  RYGJustifyFlexEnd,
+  RYGJustifySpaceBetween,
+  RYGJustifySpaceAround,
+} RYG_ENUM_END(RYGJustify);
 
-#define YGLogLevelCount 5
-typedef YG_ENUM_BEGIN(YGLogLevel) {
-  YGLogLevelError,
-  YGLogLevelWarn,
-  YGLogLevelInfo,
-  YGLogLevelDebug,
-  YGLogLevelVerbose,
-} YG_ENUM_END(YGLogLevel);
+#define RYGLogLevelCount 5
+typedef RYG_ENUM_BEGIN(RYGLogLevel) {
+  RYGLogLevelError,
+  RYGLogLevelWarn,
+  RYGLogLevelInfo,
+  RYGLogLevelDebug,
+  RYGLogLevelVerbose,
+} RYG_ENUM_END(RYGLogLevel);
 
-#define YGMeasureModeCount 3
-typedef YG_ENUM_BEGIN(YGMeasureMode) {
-  YGMeasureModeUndefined,
-  YGMeasureModeExactly,
-  YGMeasureModeAtMost,
-} YG_ENUM_END(YGMeasureMode);
+#define RYGMeasureModeCount 3
+typedef RYG_ENUM_BEGIN(RYGMeasureMode) {
+  RYGMeasureModeUndefined,
+  RYGMeasureModeExactly,
+  RYGMeasureModeAtMost,
+} RYG_ENUM_END(RYGMeasureMode);
 
-#define YGOverflowCount 3
-typedef YG_ENUM_BEGIN(YGOverflow) {
-  YGOverflowVisible,
-  YGOverflowHidden,
-  YGOverflowScroll,
-} YG_ENUM_END(YGOverflow);
+#define RYGOverflowCount 3
+typedef RYG_ENUM_BEGIN(RYGOverflow) {
+  RYGOverflowVisible,
+  RYGOverflowHidden,
+  RYGOverflowScroll,
+} RYG_ENUM_END(RYGOverflow);
 
-#define YGPositionTypeCount 2
-typedef YG_ENUM_BEGIN(YGPositionType) {
-  YGPositionTypeRelative,
-  YGPositionTypeAbsolute,
-} YG_ENUM_END(YGPositionType);
+#define RYGPositionTypeCount 2
+typedef RYG_ENUM_BEGIN(RYGPositionType) {
+  RYGPositionTypeRelative,
+  RYGPositionTypeAbsolute,
+} RYG_ENUM_END(RYGPositionType);
 
-#define YGPrintOptionsCount 3
-typedef YG_ENUM_BEGIN(YGPrintOptions) {
-  YGPrintOptionsLayout = 1,
-  YGPrintOptionsStyle = 2,
-  YGPrintOptionsChildren = 4,
-} YG_ENUM_END(YGPrintOptions);
+#define RYGPrintOptionsCount 3
+typedef RYG_ENUM_BEGIN(RYGPrintOptions) {
+  RYGPrintOptionsLayout = 1,
+  RYGPrintOptionsStyle = 2,
+  RYGPrintOptionsChildren = 4,
+} RYG_ENUM_END(RYGPrintOptions);
 
-#define YGUnitCount 4
-typedef YG_ENUM_BEGIN(YGUnit) {
-  YGUnitUndefined,
-  YGUnitPoint,
-  YGUnitPercent,
-  YGUnitAuto,
-} YG_ENUM_END(YGUnit);
+#define RYGUnitCount 4
+typedef RYG_ENUM_BEGIN(RYGUnit) {
+  RYGUnitUndefined,
+  RYGUnitPoint,
+  RYGUnitPercent,
+  RYGUnitAuto,
+} RYG_ENUM_END(RYGUnit);
 
-#define YGWrapCount 3
-typedef YG_ENUM_BEGIN(YGWrap) {
-  YGWrapNoWrap,
-  YGWrapWrap,
-  YGWrapWrapReverse,
-} YG_ENUM_END(YGWrap);
+#define RYGWrapCount 3
+typedef RYG_ENUM_BEGIN(RYGWrap) {
+  RYGWrapNoWrap,
+  RYGWrapWrap,
+  RYGWrapWrapReverse,
+} RYG_ENUM_END(RYGWrap);
 
-YG_EXTERN_C_END
+RYG_EXTERN_C_END

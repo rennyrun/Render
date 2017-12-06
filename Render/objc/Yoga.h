@@ -19,165 +19,165 @@ static const unsigned long __nan[2] = {0xffffffff, 0x7fffffff};
 #define NAN (*(const float *) __nan)
 #endif
 
-#define YGUndefined NAN
+#define RYGUndefined NAN
 
 
 #include "YGEnums.h"
 #include "YGMacros.h"
 
-YG_EXTERN_C_BEGIN
+RYG_EXTERN_C_BEGIN
 
-typedef struct YGSize {
+typedef struct RYGSize {
   float width;
   float height;
-} YGSize;
+} RYGSize;
 
-typedef struct YGValue {
+typedef struct RYGValue {
   float value;
-  YGUnit unit;
-} YGValue;
+  RYGUnit unit;
+} RYGValue;
 
-static const YGValue YGValueUndefined = {YGUndefined, YGUnitUndefined};
-static const YGValue YGValueAuto = {YGUndefined, YGUnitAuto};
+static const RYGValue RYGValueUndefined = {RYGUndefined, RYGUnitUndefined};
+static const RYGValue RYGValueAuto = {RYGUndefined, RYGUnitAuto};
 
-typedef struct YGNode *YGNodeRef;
-typedef YGSize (*YGMeasureFunc)(YGNodeRef node,
+typedef struct RYGNode *RYGNodeRef;
+typedef RYGSize (*RYGMeasureFunc)(RYGNodeRef node,
 float width,
-YGMeasureMode widthMode,
+RYGMeasureMode widthMode,
 float height,
-YGMeasureMode heightMode);
-typedef float (*YGBaselineFunc)(YGNodeRef node, const float width, const float height);
-typedef void (*YGPrintFunc)(YGNodeRef node);
-typedef int (*YGLogger)(YGLogLevel level, const char *format, va_list args);
+RYGMeasureMode heightMode);
+typedef float (*RYGBaselineFunc)(RYGNodeRef node, const float width, const float height);
+typedef void (*RYGPrintFunc)(RYGNodeRef node);
+typedef int (*RYGLogger)(RYGLogLevel level, const char *format, va_list args);
 
-typedef void *(*YGMalloc)(size_t size);
-typedef void *(*YGCalloc)(size_t count, size_t size);
-typedef void *(*YGRealloc)(void *ptr, size_t size);
-typedef void (*YGFree)(void *ptr);
+typedef void *(*RYGMalloc)(size_t size);
+typedef void *(*RYGCalloc)(size_t count, size_t size);
+typedef void *(*RYGRealloc)(void *ptr, size_t size);
+typedef void (*RYGFree)(void *ptr);
 
-// YGNode
-WIN_EXPORT YGNodeRef YGNodeNew(void);
-WIN_EXPORT void YGNodeFree(const YGNodeRef node);
-WIN_EXPORT void YGNodeFreeRecursive(const YGNodeRef node);
-WIN_EXPORT void YGNodeReset(const YGNodeRef node);
-WIN_EXPORT int32_t YGNodeGetInstanceCount(void);
+// RYGNode
+WIN_EXPORT RYGNodeRef RYGNodeNew(void);
+WIN_EXPORT void RYGNodeFree(const RYGNodeRef node);
+WIN_EXPORT void RYGNodeFreeRecursive(const RYGNodeRef node);
+WIN_EXPORT void RYGNodeReset(const RYGNodeRef node);
+WIN_EXPORT int32_t RYGNodeGetInstanceCount(void);
 
-WIN_EXPORT void YGNodeInsertChild(const YGNodeRef node,
-                                  const YGNodeRef child,
+WIN_EXPORT void RYGNodeInsertChild(const RYGNodeRef node,
+                                  const RYGNodeRef child,
                                   const uint32_t index);
-WIN_EXPORT void YGNodeRemoveChild(const YGNodeRef node, const YGNodeRef child);
-WIN_EXPORT YGNodeRef YGNodeGetChild(const YGNodeRef node, const uint32_t index);
-WIN_EXPORT YGNodeRef YGNodeGetParent(const YGNodeRef node);
-WIN_EXPORT uint32_t YGNodeGetChildCount(const YGNodeRef node);
+WIN_EXPORT void RYGNodeRemoveChild(const RYGNodeRef node, const RYGNodeRef child);
+WIN_EXPORT RYGNodeRef RYGNodeGetChild(const RYGNodeRef node, const uint32_t index);
+WIN_EXPORT RYGNodeRef RYGNodeGetParent(const RYGNodeRef node);
+WIN_EXPORT uint32_t RYGNodeGetChildCount(const RYGNodeRef node);
 
-WIN_EXPORT void YGNodeCalculateLayout(const YGNodeRef node,
+WIN_EXPORT void RYGNodeCalculateLayout(const RYGNodeRef node,
                                       const float availableWidth,
                                       const float availableHeight,
-                                      const YGDirection parentDirection);
+                                      const RYGDirection parentDirection);
 
 // Mark a node as dirty. Only valid for nodes with a custom measure function
 // set.
-// YG knows when to mark all other nodes as dirty but because nodes with
+// RYG knows when to mark all other nodes as dirty but because nodes with
 // measure functions
-// depends on information not known to YG they must perform this dirty
+// depends on information not known to RYG they must perform this dirty
 // marking manually.
-WIN_EXPORT void YGNodeMarkDirty(const YGNodeRef node);
-WIN_EXPORT bool YGNodeIsDirty(const YGNodeRef node);
+WIN_EXPORT void RYGNodeMarkDirty(const RYGNodeRef node);
+WIN_EXPORT bool RYGNodeIsDirty(const RYGNodeRef node);
 
-WIN_EXPORT void YGNodePrint(const YGNodeRef node, const YGPrintOptions options);
+WIN_EXPORT void RYGNodePrint(const RYGNodeRef node, const RYGPrintOptions options);
 
-WIN_EXPORT bool YGFloatIsUndefined(const float value);
+WIN_EXPORT bool RYGFloatIsUndefined(const float value);
 
-WIN_EXPORT bool YGNodeCanUseCachedMeasurement(const YGMeasureMode widthMode,
+WIN_EXPORT bool RYGNodeCanUseCachedMeasurement(const RYGMeasureMode widthMode,
                                               const float width,
-                                              const YGMeasureMode heightMode,
+                                              const RYGMeasureMode heightMode,
                                               const float height,
-                                              const YGMeasureMode lastWidthMode,
+                                              const RYGMeasureMode lastWidthMode,
                                               const float lastWidth,
-                                              const YGMeasureMode lastHeightMode,
+                                              const RYGMeasureMode lastHeightMode,
                                               const float lastHeight,
                                               const float lastComputedWidth,
                                               const float lastComputedHeight,
                                               const float marginRow,
                                               const float marginColumn);
 
-WIN_EXPORT void YGNodeCopyStyle(const YGNodeRef dstNode, const YGNodeRef srcNode);
+WIN_EXPORT void RYGNodeCopyStyle(const RYGNodeRef dstNode, const RYGNodeRef srcNode);
 
-#define YG_NODE_PROPERTY(type, name, paramName)                          \
-WIN_EXPORT void YGNodeSet##name(const YGNodeRef node, type paramName); \
-WIN_EXPORT type YGNodeGet##name(const YGNodeRef node);
+#define RYG_NODE_PROPERTY(type, name, paramName)                          \
+WIN_EXPORT void RYGNodeSet##name(const RYGNodeRef node, type paramName); \
+WIN_EXPORT type RYGNodeGet##name(const RYGNodeRef node);
 
-#define YG_NODE_STYLE_PROPERTY(type, name, paramName)                               \
-WIN_EXPORT void YGNodeStyleSet##name(const YGNodeRef node, const type paramName); \
-WIN_EXPORT type YGNodeStyleGet##name(const YGNodeRef node);
+#define RYG_NODE_STYLE_PROPERTY(type, name, paramName)                               \
+WIN_EXPORT void RYGNodeStyleSet##name(const RYGNodeRef node, const type paramName); \
+WIN_EXPORT type RYGNodeStyleGet##name(const RYGNodeRef node);
 
-#define YG_NODE_STYLE_PROPERTY_UNIT(type, name, paramName)                                    \
-WIN_EXPORT void YGNodeStyleSet##name(const YGNodeRef node, const float paramName);          \
-WIN_EXPORT void YGNodeStyleSet##name##Percent(const YGNodeRef node, const float paramName); \
-WIN_EXPORT type YGNodeStyleGet##name(const YGNodeRef node);
+#define RYG_NODE_STYLE_PROPERTY_UNIT(type, name, paramName)                                    \
+WIN_EXPORT void RYGNodeStyleSet##name(const RYGNodeRef node, const float paramName);          \
+WIN_EXPORT void RYGNodeStyleSet##name##Percent(const RYGNodeRef node, const float paramName); \
+WIN_EXPORT type RYGNodeStyleGet##name(const RYGNodeRef node);
 
-#define YG_NODE_STYLE_PROPERTY_UNIT_AUTO(type, name, paramName) \
-YG_NODE_STYLE_PROPERTY_UNIT(type, name, paramName)            \
-WIN_EXPORT void YGNodeStyleSet##name##Auto(const YGNodeRef node);
+#define RYG_NODE_STYLE_PROPERTY_UNIT_AUTO(type, name, paramName) \
+RYG_NODE_STYLE_PROPERTY_UNIT(type, name, paramName)            \
+WIN_EXPORT void RYGNodeStyleSet##name##Auto(const RYGNodeRef node);
 
-#define YG_NODE_STYLE_EDGE_PROPERTY(type, name, paramName)    \
-WIN_EXPORT void YGNodeStyleSet##name(const YGNodeRef node,  \
-const YGEdge edge,     \
+#define RYG_NODE_STYLE_EDGE_PROPERTY(type, name, paramName)    \
+WIN_EXPORT void RYGNodeStyleSet##name(const RYGNodeRef node,  \
+const RYGEdge edge,     \
 const type paramName); \
-WIN_EXPORT type YGNodeStyleGet##name(const YGNodeRef node, const YGEdge edge);
+WIN_EXPORT type RYGNodeStyleGet##name(const RYGNodeRef node, const RYGEdge edge);
 
-#define YG_NODE_STYLE_EDGE_PROPERTY_UNIT(type, name, paramName)         \
-WIN_EXPORT void YGNodeStyleSet##name(const YGNodeRef node,            \
-const YGEdge edge,               \
+#define RYG_NODE_STYLE_EDGE_PROPERTY_UNIT(type, name, paramName)         \
+WIN_EXPORT void RYGNodeStyleSet##name(const RYGNodeRef node,            \
+const RYGEdge edge,               \
 const float paramName);          \
-WIN_EXPORT void YGNodeStyleSet##name##Percent(const YGNodeRef node,   \
-const YGEdge edge,      \
+WIN_EXPORT void RYGNodeStyleSet##name##Percent(const RYGNodeRef node,   \
+const RYGEdge edge,      \
 const float paramName); \
-WIN_EXPORT type YGNodeStyleGet##name(const YGNodeRef node, const YGEdge edge);
+WIN_EXPORT type RYGNodeStyleGet##name(const RYGNodeRef node, const RYGEdge edge);
 
-#define YG_NODE_STYLE_EDGE_PROPERTY_UNIT_AUTO(type, name) \
-WIN_EXPORT void YGNodeStyleSet##name##Auto(const YGNodeRef node, const YGEdge edge);
+#define RYG_NODE_STYLE_EDGE_PROPERTY_UNIT_AUTO(type, name) \
+WIN_EXPORT void RYGNodeStyleSet##name##Auto(const RYGNodeRef node, const RYGEdge edge);
 
-#define YG_NODE_LAYOUT_PROPERTY(type, name) \
-WIN_EXPORT type YGNodeLayoutGet##name(const YGNodeRef node);
+#define RYG_NODE_LAYOUT_PROPERTY(type, name) \
+WIN_EXPORT type RYGNodeLayoutGet##name(const RYGNodeRef node);
 
-#define YG_NODE_LAYOUT_EDGE_PROPERTY(type, name) \
-WIN_EXPORT type YGNodeLayoutGet##name(const YGNodeRef node, const YGEdge edge);
+#define RYG_NODE_LAYOUT_EDGE_PROPERTY(type, name) \
+WIN_EXPORT type RYGNodeLayoutGet##name(const RYGNodeRef node, const RYGEdge edge);
 
-YG_NODE_PROPERTY(void *, Context, context);
-YG_NODE_PROPERTY(YGMeasureFunc, MeasureFunc, measureFunc);
-YG_NODE_PROPERTY(YGBaselineFunc, BaselineFunc, baselineFunc)
-YG_NODE_PROPERTY(YGPrintFunc, PrintFunc, printFunc);
-YG_NODE_PROPERTY(bool, HasNewLayout, hasNewLayout);
+RYG_NODE_PROPERTY(void *, Context, context);
+RYG_NODE_PROPERTY(RYGMeasureFunc, MeasureFunc, measureFunc);
+RYG_NODE_PROPERTY(RYGBaselineFunc, BaselineFunc, baselineFunc)
+RYG_NODE_PROPERTY(RYGPrintFunc, PrintFunc, printFunc);
+RYG_NODE_PROPERTY(bool, HasNewLayout, hasNewLayout);
 
-YG_NODE_STYLE_PROPERTY(YGDirection, Direction, direction);
-YG_NODE_STYLE_PROPERTY(YGFlexDirection, FlexDirection, flexDirection);
-YG_NODE_STYLE_PROPERTY(YGJustify, JustifyContent, justifyContent);
-YG_NODE_STYLE_PROPERTY(YGAlign, AlignContent, alignContent);
-YG_NODE_STYLE_PROPERTY(YGAlign, AlignItems, alignItems);
-YG_NODE_STYLE_PROPERTY(YGAlign, AlignSelf, alignSelf);
-YG_NODE_STYLE_PROPERTY(YGPositionType, PositionType, positionType);
-YG_NODE_STYLE_PROPERTY(YGWrap, FlexWrap, flexWrap);
-YG_NODE_STYLE_PROPERTY(YGOverflow, Overflow, overflow);
-YG_NODE_STYLE_PROPERTY(YGDisplay, Display, display);
+RYG_NODE_STYLE_PROPERTY(RYGDirection, Direction, direction);
+RYG_NODE_STYLE_PROPERTY(RYGFlexDirection, FlexDirection, flexDirection);
+RYG_NODE_STYLE_PROPERTY(RYGJustify, JustifyContent, justifyContent);
+RYG_NODE_STYLE_PROPERTY(RYGAlign, AlignContent, alignContent);
+RYG_NODE_STYLE_PROPERTY(RYGAlign, AlignItems, alignItems);
+RYG_NODE_STYLE_PROPERTY(RYGAlign, AlignSelf, alignSelf);
+RYG_NODE_STYLE_PROPERTY(RYGPositionType, PositionType, positionType);
+RYG_NODE_STYLE_PROPERTY(RYGWrap, FlexWrap, flexWrap);
+RYG_NODE_STYLE_PROPERTY(RYGOverflow, Overflow, overflow);
+RYG_NODE_STYLE_PROPERTY(RYGDisplay, Display, display);
 
-WIN_EXPORT void YGNodeStyleSetFlex(const YGNodeRef node, const float flex);
-YG_NODE_STYLE_PROPERTY(float, FlexGrow, flexGrow);
-YG_NODE_STYLE_PROPERTY(float, FlexShrink, flexShrink);
-YG_NODE_STYLE_PROPERTY_UNIT_AUTO(YGValue, FlexBasis, flexBasis);
+WIN_EXPORT void RYGNodeStyleSetFlex(const RYGNodeRef node, const float flex);
+RYG_NODE_STYLE_PROPERTY(float, FlexGrow, flexGrow);
+RYG_NODE_STYLE_PROPERTY(float, FlexShrink, flexShrink);
+RYG_NODE_STYLE_PROPERTY_UNIT_AUTO(RYGValue, FlexBasis, flexBasis);
 
-YG_NODE_STYLE_EDGE_PROPERTY_UNIT(YGValue, Position, position);
-YG_NODE_STYLE_EDGE_PROPERTY_UNIT(YGValue, Margin, margin);
-YG_NODE_STYLE_EDGE_PROPERTY_UNIT_AUTO(YGValue, Margin);
-YG_NODE_STYLE_EDGE_PROPERTY_UNIT(YGValue, Padding, padding);
-YG_NODE_STYLE_EDGE_PROPERTY(float, Border, border);
+RYG_NODE_STYLE_EDGE_PROPERTY_UNIT(RYGValue, Position, position);
+RYG_NODE_STYLE_EDGE_PROPERTY_UNIT(RYGValue, Margin, margin);
+RYG_NODE_STYLE_EDGE_PROPERTY_UNIT_AUTO(RYGValue, Margin);
+RYG_NODE_STYLE_EDGE_PROPERTY_UNIT(RYGValue, Padding, padding);
+RYG_NODE_STYLE_EDGE_PROPERTY(float, Border, border);
 
-YG_NODE_STYLE_PROPERTY_UNIT_AUTO(YGValue, Width, width);
-YG_NODE_STYLE_PROPERTY_UNIT_AUTO(YGValue, Height, height);
-YG_NODE_STYLE_PROPERTY_UNIT(YGValue, MinWidth, minWidth);
-YG_NODE_STYLE_PROPERTY_UNIT(YGValue, MinHeight, minHeight);
-YG_NODE_STYLE_PROPERTY_UNIT(YGValue, MaxWidth, maxWidth);
-YG_NODE_STYLE_PROPERTY_UNIT(YGValue, MaxHeight, maxHeight);
+RYG_NODE_STYLE_PROPERTY_UNIT_AUTO(RYGValue, Width, width);
+RYG_NODE_STYLE_PROPERTY_UNIT_AUTO(RYGValue, Height, height);
+RYG_NODE_STYLE_PROPERTY_UNIT(RYGValue, MinWidth, minWidth);
+RYG_NODE_STYLE_PROPERTY_UNIT(RYGValue, MinHeight, minHeight);
+RYG_NODE_STYLE_PROPERTY_UNIT(RYGValue, MaxWidth, maxWidth);
+RYG_NODE_STYLE_PROPERTY_UNIT(RYGValue, MaxHeight, maxHeight);
 
 // Yoga specific properties, not compatible with flexbox specification
 // Aspect ratio control the size of the undefined dimension of a node.
@@ -192,31 +192,31 @@ YG_NODE_STYLE_PROPERTY_UNIT(YGValue, MaxHeight, maxHeight);
 // - On a node with flex grow/shrink aspect ratio controls the size of the node in the cross axis if
 // unset
 // - Aspect ratio takes min/max dimensions into account
-YG_NODE_STYLE_PROPERTY(float, AspectRatio, aspectRatio);
+RYG_NODE_STYLE_PROPERTY(float, AspectRatio, aspectRatio);
 
-YG_NODE_LAYOUT_PROPERTY(float, Left);
-YG_NODE_LAYOUT_PROPERTY(float, Top);
-YG_NODE_LAYOUT_PROPERTY(float, Right);
-YG_NODE_LAYOUT_PROPERTY(float, Bottom);
-YG_NODE_LAYOUT_PROPERTY(float, Width);
-YG_NODE_LAYOUT_PROPERTY(float, Height);
-YG_NODE_LAYOUT_PROPERTY(YGDirection, Direction);
+RYG_NODE_LAYOUT_PROPERTY(float, Left);
+RYG_NODE_LAYOUT_PROPERTY(float, Top);
+RYG_NODE_LAYOUT_PROPERTY(float, Right);
+RYG_NODE_LAYOUT_PROPERTY(float, Bottom);
+RYG_NODE_LAYOUT_PROPERTY(float, Width);
+RYG_NODE_LAYOUT_PROPERTY(float, Height);
+RYG_NODE_LAYOUT_PROPERTY(RYGDirection, Direction);
 
 // Get the computed values for these nodes after performing layout. If they were set using
-// point values then the returned value will be the same as YGNodeStyleGetXXX. However if
+// point values then the returned value will be the same as RYGNodeStyleGetXXX. However if
 // they were set using a percentage value then the returned value is the computed value used
 // during layout.
-YG_NODE_LAYOUT_EDGE_PROPERTY(float, Margin);
-YG_NODE_LAYOUT_EDGE_PROPERTY(float, Border);
-YG_NODE_LAYOUT_EDGE_PROPERTY(float, Padding);
+RYG_NODE_LAYOUT_EDGE_PROPERTY(float, Margin);
+RYG_NODE_LAYOUT_EDGE_PROPERTY(float, Border);
+RYG_NODE_LAYOUT_EDGE_PROPERTY(float, Padding);
 
-WIN_EXPORT void YGSetLogger(YGLogger logger);
-WIN_EXPORT void YGLog(YGLogLevel level, const char *message, ...);
+WIN_EXPORT void RYGSetLogger(RYGLogger logger);
+WIN_EXPORT void RYGLog(RYGLogLevel level, const char *message, ...);
 
-WIN_EXPORT void YGSetExperimentalFeatureEnabled(YGExperimentalFeature feature, bool enabled);
-WIN_EXPORT bool YGIsExperimentalFeatureEnabled(YGExperimentalFeature feature);
+WIN_EXPORT void RYGSetExperimentalFeatureEnabled(RYGExperimentalFeature feature, bool enabled);
+WIN_EXPORT bool RYGIsExperimentalFeatureEnabled(RYGExperimentalFeature feature);
 
 WIN_EXPORT void
-YGSetMemoryFuncs(YGMalloc ygmalloc, YGCalloc yccalloc, YGRealloc ygrealloc, YGFree ygfree);
+RYGSetMemoryFuncs(RYGMalloc RYGmalloc, RYGCalloc yccalloc, RYGRealloc RYGrealloc, RYGFree RYGfree);
 
-YG_EXTERN_C_END
+RYG_EXTERN_C_END
