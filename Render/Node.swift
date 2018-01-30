@@ -41,7 +41,7 @@ public protocol NodeType: class {
 
 public class Node<V: UIView>: NodeType {
 
-  public typealias CreateBlock = (Void) -> V
+  public typealias CreateBlock = () -> V
   public typealias ConfigureBlock = (V, RYGLayout, CGSize) -> (Void)
   public typealias OnRenderBlock = (V?) -> (Void)
 
@@ -108,7 +108,7 @@ public class Node<V: UIView>: NodeType {
               resetBeforeReuse: Bool = false,
               children: [NodeType] = [],
               create: @escaping CreateBlock = { V() },
-              configure: @escaping ConfigureBlock = { _ in }) {
+              configure: @escaping ConfigureBlock = { _, _, _ in }) {
     self.identifier = identifier
     self.resetBeforeReuse = resetBeforeReuse
     self.create = create

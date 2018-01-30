@@ -68,7 +68,7 @@ public class TableNode: NSObject, NodeType, UITableViewDataSource, UITableViewDe
   public init(identifier: String = "CollectionNode",
               children: [NodeType] = [],
               create: @escaping Node<UITableView>.CreateBlock = { return UITableView() },
-              configure: @escaping Node<UITableView>.ConfigureBlock = { _ in }) {
+              configure: @escaping Node<UITableView>.ConfigureBlock = { _, _, _ in }) {
 
     self.node = Node(identifier: identifier,
                      resetBeforeReuse: false,
