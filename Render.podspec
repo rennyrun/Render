@@ -30,10 +30,10 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'Render/Render/Classes/**/*'
+  s.source_files = 'Render/Render/*'
 
   # s.resource_bundles = {
-  #   'Render' => ['Render/Classes/**/*']
+  #   'Render' => ['Render/Assets/*.png']
   # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
