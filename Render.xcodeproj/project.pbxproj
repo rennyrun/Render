@@ -82,7 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				458E0F5820DCC9DD004CB53E /* Info.plist */,
-				458E0F5720DCC9AF004CB53E /* Codes */,
+				458E0F5720DCC9AF004CB53E /* Classes */,
 			);
 			path = Render;
 			sourceTree = "<group>";
@@ -105,7 +105,7 @@
 			path = objc;
 			sourceTree = "<group>";
 		};
-		458E0F5720DCC9AF004CB53E /* Codes */ = {
+		458E0F5720DCC9AF004CB53E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				164C114B1E59ECC600766914 /* objc */,
@@ -117,7 +117,7 @@
 				164C11A71E5E2F4400766914 /* ComponentCell.swift */,
 				16C59F801E75BE9900D9E297 /* TableNode.swift */,
 			);
-			path = Codes;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
