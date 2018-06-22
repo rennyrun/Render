@@ -30,7 +30,6 @@
 /* Begin PBXFileReference section */
 		164C11401E59ECB200766914 /* Render.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Render.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		164C11431E59ECB200766914 /* Render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Render.h; sourceTree = "<group>"; };
-		164C11441E59ECB200766914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		164C114C1E59ECC600766914 /* UIView+Yoga.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Yoga.h"; sourceTree = "<group>"; };
 		164C114D1E59ECC600766914 /* UIView+Yoga.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Yoga.m"; sourceTree = "<group>"; };
 		164C114E1E59ECC600766914 /* YGEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YGEnums.h; sourceTree = "<group>"; };
@@ -82,7 +81,6 @@
 			children = (
 				164C114B1E59ECC600766914 /* objc */,
 				164C11431E59ECB200766914 /* Render.h */,
-				164C11441E59ECB200766914 /* Info.plist */,
 				164C11621E59ECEC00766914 /* Node.swift */,
 				164C11641E5A190000766914 /* Extensions.swift */,
 				164C11681E5A203100766914 /* Reset.swift */,
