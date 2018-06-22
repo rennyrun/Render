@@ -30,11 +30,11 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  # s.source_files = 'Render/**/*'
+  s.source_files = 'Render/Render/Classes/**/*'
 
-  s.resource_bundles = {
-    'Render' => ['Render/Classes/**/*.swift']
-  }
+  # s.resource_bundles = {
+  #   'Render' => ['Render/Classes/**/*']
+  # }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
