@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   # s.source_files = 'Render/**/*'
 
   s.resource_bundles = {
-    'Render' => ['Render/Classes/**/*']
+    'Render' => ['Render/Classes/**/*.swift']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
