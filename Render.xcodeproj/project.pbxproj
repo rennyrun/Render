@@ -25,6 +25,7 @@
 		164C116B1E5A257300766914 /* ComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C116A1E5A257300766914 /* ComponentView.swift */; };
 		164C11A81E5E2F4400766914 /* ComponentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164C11A71E5E2F4400766914 /* ComponentCell.swift */; };
 		16C59F811E75BE9900D9E297 /* TableNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16C59F801E75BE9900D9E297 /* TableNode.swift */; };
+		458E0F5920DCC9DD004CB53E /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 458E0F5820DCC9DD004CB53E /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		164C116A1E5A257300766914 /* ComponentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentView.swift; sourceTree = "<group>"; };
 		164C11A71E5E2F4400766914 /* ComponentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentCell.swift; sourceTree = "<group>"; };
 		16C59F801E75BE9900D9E297 /* TableNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableNode.swift; sourceTree = "<group>"; };
+		458E0F5820DCC9DD004CB53E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,14 +81,8 @@
 		164C11421E59ECB200766914 /* Render */ = {
 			isa = PBXGroup;
 			children = (
-				164C114B1E59ECC600766914 /* objc */,
-				164C11431E59ECB200766914 /* Render.h */,
-				164C11621E59ECEC00766914 /* Node.swift */,
-				164C11641E5A190000766914 /* Extensions.swift */,
-				164C11681E5A203100766914 /* Reset.swift */,
-				164C116A1E5A257300766914 /* ComponentView.swift */,
-				164C11A71E5E2F4400766914 /* ComponentCell.swift */,
-				16C59F801E75BE9900D9E297 /* TableNode.swift */,
+				458E0F5820DCC9DD004CB53E /* Info.plist */,
+				458E0F5720DCC9AF004CB53E /* Codes */,
 			);
 			path = Render;
 			sourceTree = "<group>";
@@ -107,6 +103,21 @@
 				164C11561E59ECC600766914 /* Yoga.h */,
 			);
 			path = objc;
+			sourceTree = "<group>";
+		};
+		458E0F5720DCC9AF004CB53E /* Codes */ = {
+			isa = PBXGroup;
+			children = (
+				164C114B1E59ECC600766914 /* objc */,
+				164C11431E59ECB200766914 /* Render.h */,
+				164C11621E59ECEC00766914 /* Node.swift */,
+				164C11641E5A190000766914 /* Extensions.swift */,
+				164C11681E5A203100766914 /* Reset.swift */,
+				164C116A1E5A257300766914 /* ComponentView.swift */,
+				164C11A71E5E2F4400766914 /* ComponentCell.swift */,
+				16C59F801E75BE9900D9E297 /* TableNode.swift */,
+			);
+			path = Codes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				458E0F5920DCC9DD004CB53E /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

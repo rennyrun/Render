@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'Render/**/*'
+  s.source_files = 'Render/Codes/**/*'
 
   # s.resource_bundles = {
   #   'Render' => ['Render/Assets/*.png']
